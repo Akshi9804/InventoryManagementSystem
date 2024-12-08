@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class InsightService {
-  private baseUrl = `https://inventorymanagementsystem-e8ga.onrender.com/insights/apiResponse`;
+  private baseUrl = `/api/insights/apiResponse`;
 
   constructor(private http: HttpClient) { }
 

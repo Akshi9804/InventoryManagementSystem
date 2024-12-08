@@ -10,7 +10,7 @@ import { StockTransferLog } from '../interfaces/stock-transfer-log.interface';
 export class LocationService {
 
   constructor(private http:HttpClient) { }
-  private baseUrl = 'https://inventorymanagementsystem-e8ga.onrender.com/location';
+  private baseUrl = '/api/location';
 
 
   getAllLocations(): Observable<ApiResponse<Location>> {
@@ -46,6 +46,6 @@ export class LocationService {
   }
 
   getStockTransferLogs():Observable<ApiResponse<StockTransferLog>> {
-    return this.http.get<ApiResponse<StockTransferLog>>(`https://inventorymanagementsystem-e8ga.onrender.com/stock-transfer-logs`);
+    return this.http.get<ApiResponse<StockTransferLog>>(`/api/stock-transfer-logs`);
   }
 }

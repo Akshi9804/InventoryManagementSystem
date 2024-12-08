@@ -10,7 +10,7 @@ import { Supplier } from '../interfaces/supplierInterface.interface';
 })
 export class SupplierService {
 
-  private baseUrl = 'https://inventorymanagementsystem-e8ga.onrender.com/supplier';
+  private baseUrl = '/api/supplier';
 
   constructor(private http: HttpClient) { }
 

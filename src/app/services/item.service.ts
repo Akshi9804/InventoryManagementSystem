@@ -10,7 +10,7 @@ import { Barcode } from '../interfaces/barcode.interface';
 })
 export class ItemService {
 
-  private baseUrl = 'https://inventorymanagementsystem-e8ga.onrender.com/item';
+  private baseUrl = '/api/item';
 
   constructor(private http: HttpClient) {}
 
@@ -44,6 +44,6 @@ export class ItemService {
   }
 
   getBarcode(itemId:string):Observable<ApiResponse<Barcode>> {
-    return this.http.get<ApiResponse<Barcode>>(`https://inventorymanagementsystem-e8ga.onrender.com/barcode/${itemId}`);
+    return this.http.get<ApiResponse<Barcode>>(`/api/barcode/${itemId}`);
   }
 }

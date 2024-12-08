@@ -10,7 +10,7 @@ import { UserActivityLog } from '../interfaces/user-activity-log.interface';
 })
 export class LogsService {
 
-  private baseUrl = 'https://inventorymanagementsystem-e8ga.onrender.com';
+  private baseUrl = '/api';
 
   constructor(private http:HttpClient) { }
 

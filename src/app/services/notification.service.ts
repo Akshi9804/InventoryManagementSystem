@@ -9,7 +9,7 @@ import { Notification } from '../interfaces/notification.interface';
 })
 export class NotificationService {
 
-  private baseUrl = 'https://inventorymanagementsystem-e8ga.onrender.com/notification';
+  private baseUrl = '/api/notification';
 
   constructor(private http:HttpClient) { }
 
