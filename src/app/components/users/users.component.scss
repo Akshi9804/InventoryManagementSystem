@@ -1,0 +1,204 @@
+.manage-users-panel{
+    width: 90%;
+    margin: auto;
+    padding: 30px;
+    .content{
+      margin-top: 20px;
+    }
+    .approve-users{
+        .cards-container{
+            padding-top: 30px;
+            padding: 10px;
+            padding-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            .card1{
+                width: 30%;
+            }
+            .card{
+                box-shadow: 0px 0px 3px 0px grey;
+                width: 80%;
+                padding: 20px;
+                border-radius: 5px;
+                margin-top: 10px;
+                display: flex;
+            justify-content: space-between;
+                &:hover{
+                    transform: scale(1.01);
+                  }
+                  .role{
+                    display: flex;
+                    align-items: center;
+                    select{
+                        width: 200px;
+                        display: block;
+                        padding: 8px 10px;
+                        margin-bottom: 10px;
+                        &:hover {
+                            border-color: #8b8b8b;
+                          }
+                          
+                          /* Focus state */
+                          &:focus {
+                            outline: none;
+                            border-color: #6d6d6d;
+                            box-shadow: 0 0 5px rgba(204, 204, 204, 0.5);
+                          }
+                    }
+                  }
+                  .card-data{
+                    display: flex;
+                    align-items: center;
+                    button{
+                        color: white;
+                        padding: 8px 10px ;
+                        margin-right: 5px;
+                        border: transparent;
+                        border-radius: 5px;
+                        &:hover{
+                            transform: scale(1.02);
+                            opacity: 0.85;
+                          }
+                    }
+                    .approve, .active{
+                        background-color: green;
+                    }
+                    .decline, .deactive{
+                        background-color: rgb(213, 0, 0);
+                    }
+                  }
+            }
+        }
+    }
+    
+    .users{
+        .cards-container{
+            padding-top: 30px;
+            padding: 10px;
+            padding-top: 20px;
+            .card{
+                box-shadow: 0px 0px 3px 0px grey;
+                width: 45%;
+                padding: 20px;
+                border-radius: 5px;
+                display: flex;
+            justify-content: space-between;
+                &:hover{
+                    transform: scale(1.01);
+                  }
+                  .role{
+                    display: flex;
+                    align-items: center;
+                    select{
+                        width: 200px;
+                        display: block;
+                        padding: 8px 10px;
+                        margin-bottom: 10px;
+                        &:hover {
+                            border-color: #8b8b8b;
+                          }
+                          
+                          /* Focus state */
+                          &:focus {
+                            outline: none;
+                            border-color: #6d6d6d;
+                            box-shadow: 0 0 5px rgba(204, 204, 204, 0.5);
+                          }
+                    }
+                  }
+                  .card-data{
+                    display: flex;
+                    align-items: center;
+                    button{
+                        color: white;
+                        padding: 8px 10px ;
+                        margin-right: 5px;
+                        border: transparent;
+                        border-radius: 5px;
+                        &:hover{
+                            transform: scale(1.02);
+                            opacity: 0.85;
+                          }
+                    }
+                    .approve, .active{
+                        background-color: green;
+                    }
+                    .decline, .deactive{
+                        background-color: rgb(213, 0, 0);
+                    }
+                  }
+            }
+        }
+    }
+
+    .user-activities{
+      .date-range-filter{
+        display: flex;
+        justify-content: center;
+    
+        justify-content: space-around;
+        width: 50%;
+        margin: auto;
+      }
+      .tabular-data {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 10px;
+    
+        ::ng-deep {
+    
+          .mdc-notched-outline > * {
+            border: none !important;
+          }
+    
+          table {
+            border-collapse: collapse;
+            font-family: "Lato", serif;
+            font-weight: 400;
+            font-style: normal;
+    
+            thead {
+              .mat-mdc-header-row {
+                font-family: "Lato", serif;
+                font-weight: 400;
+                font-style: normal;
+                height: 15px;
+    
+                .mat-mdc-header-cell {
+                  border: 0px;
+                  border-bottom: 2px solid rgb(53,94,59);
+                  border-right: 1px solid grey;
+                  margin-bottom: 10px;
+                }
+                
+              }
+            }
+    
+            tbody {
+              .mat-mdc-row {
+                font-family: "Lato", serif;
+                font-weight: 400;
+                font-style: normal;
+    
+                .mat-mdc-cell {
+                  border-bottom: 0px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+}
+
+::ng-deep .mat-mdc-tab .mdc-tab-indicator__content--underline {
+  border-color: rgb(53, 94, 59) !important;
+}
+
+::ng-deep .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+  color: black !important;
+}

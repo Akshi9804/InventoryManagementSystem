@@ -1,0 +1,36 @@
+<div class="supplier-panel">
+  <h2 class="heading">{{supplier?.supplierId}}</h2>
+  <div class="supplier-details">
+    <div>
+      <h3><b>Supplier Name:</b> {{supplier?.name}}</h3>
+      <h3><b>Email:</b> {{supplier?.email}}</h3>
+      <h3><b>Mobile:</b> {{supplier?.mobile}}</h3>
+      <h3><b>Address:</b> {{supplier?.address}}</h3>
+      <h3><b>Delivery In Days:</b> {{supplier?.deliveryInDays}}</h3>
+    </div>
+    <div *ngIf="isAdmin">
+      <button class="delete-sup" (click)="openConfirmationDialogForDelete()">Delete</button>
+    </div>
+  
+  </div>
+  
+  <div class="items-header">
+    <h3>Items provided by the supplier</h3>
+    <button (click)="navigateToAddItem()" *ngIf="isAdmin">Add New Item</button>
+  </div>
+  <div class="no-data">
+    <p *ngIf="items.length===0">No items are provided</p>
+  </div>
+  <div class="items" *ngIf="items.length>0" >
+    <div class="item"  *ngFor="let item of items">
+      <div>
+        <h2>{{item.name}}</h2>
+        <p>Category: {{item.category}}</p>
+      </div>
+      <div *ngIf="isAdmin">
+        <button mat-icon-button (click)="openConfirmationDialogForDeleteItem(item.itemId)"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon></button>
+      </div>
+    </div>
+  </div>
+</div>
+

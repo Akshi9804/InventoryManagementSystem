@@ -1,0 +1,56 @@
+::ng-deep .mat-dialog-container {
+  border-radius: 16px; // Increased border radius for a smoother look
+  padding: 24px; // Adds more space inside the dialog
+  background-color: #f9f9f9; // Soft white background for a clean appearance
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); // Slightly stronger shadow for depth
+  max-width: 400px; // Limits the width of the dialog
+  text-align: center; // Center the text and buttons
+}
+
+.dialog-box{
+  padding: 30px;
+}
+
+.dialog-content {
+  font-size: 1.2rem; // Slightly larger text
+  color: #333; // Dark text for readability
+  margin-bottom: 20px; // Space between text and buttons
+  padding: 0 8px; // Horizontal padding for better spacing
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: center; // Center-align buttons
+  gap: 20px; // Space between buttons
+}
+
+button {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 24px; // Extra padding for a premium feel
+  border-radius: 25px; // More rounded buttons
+  transition: all 0.3s ease;
+  width: 100px; // Smooth transitions for hover effects
+}
+
+.cancel-button {
+  background-color: #efefef; // Light blue background
+  color: rgb(53,94,59); // Blue text to match theme
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: rgb(194, 212, 197); // Slightly darker blue on hover
+    border-color: rgb(53,94,59); // Add a visible border on hover
+  }
+}
+
+.confirm-button {
+  background-color: rgb(53,94,59); // Blue background for the confirm button
+  color: #fff; // White text for contrast
+  border: 1px solid rgb(53,94,59);
+
+  &:hover {
+    background-color: rgb(53,94,59); // Darker blue on hover
+    border-color: rgb(53,94,59); // Dark blue border
+  }
+}

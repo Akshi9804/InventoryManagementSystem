@@ -1,0 +1,62 @@
+.menubar {
+  background-color: black; 
+  height: 100vh; 
+  width: 16vw;
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: -101%;
+  padding-bottom: 101%; 
+  position: fixed;
+
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 30px; 
+    margin-top: 30px;
+    margin-left: 10px;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none; // Remove default list styling
+    width: 100%; // Full width for better alignment
+  }
+
+  li {
+    margin-bottom: 15px; // Spacing between menu items
+    padding-left: 10px;
+    overflow: hidden; // Ensure rounded edges are clean
+    transition: all 0.3s ease; // Smooth hover transition
+
+    &.active {
+      background-color: rgb(53,94,59); // Highlight active item
+    }
+
+    &:hover {
+      background-color: rgba(53, 94, 59, 0.7); // Lighter hover effect
+      cursor: pointer;
+      padding-left: 18px;
+    }
+  }
+
+  a {
+    display: block;
+    padding: 15px 0px; // Internal spacing for menu items
+    text-decoration: none; // Remove underline
+    color: white;
+    font-size: 16px;
+    font-weight: 300;
+    transition: color 0.3s ease; // Smooth text color transition
+
+    &:hover {
+      color: #cce7ff; // Slightly lighter color on hover
+    }
+  }
+}
+
+//#6E27C5

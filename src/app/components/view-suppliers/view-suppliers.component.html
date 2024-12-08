@@ -1,0 +1,20 @@
+<div class="supplier-panel">
+  <div class="suppliers">
+    <h1>Suppleirs</h1>
+    <button (click)="navigateToAddSuppliers()" *ngIf="isAdmin">Add Supplier</button>
+    <div class="no-data">
+      <p *ngIf="suppliers.length==0">No supplies exist</p>
+    </div>
+    <div *ngIf="suppliers.length>0">
+      <div class="card" *ngFor="let supplier of suppliers">
+        <div class="content">
+          <p>{{supplier.name}}</p>
+          <a [routerLink]="['/task/suppliers', supplier.supplierId]"><i class="material-icons" style="color:grey">arrow_forward_ios</i></a>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+  
+</div>

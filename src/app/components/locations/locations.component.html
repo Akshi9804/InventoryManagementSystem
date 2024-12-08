@@ -1,0 +1,25 @@
+<div class="locations-panel">
+  <div class="header">
+    <h1>Locations</h1>
+    <button (click)="openLocationDialog()" *ngIf="isAdmin">Add Location</button>
+  </div>
+  
+  <div class="no-data">
+    <p *ngIf="locations.length===0">No locations are exist</p>
+  </div>
+  <div *ngIf="locations.length>0">
+    <div class="locations">
+      
+      <div class="card" *ngFor="let location of locations">
+        <div class="content">
+          <p>{{location.name}}</p>
+          <a [routerLink]="['/task/location', location.locId]"><i class="material-icons"
+              style="color:grey">arrow_forward_ios</i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

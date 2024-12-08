@@ -1,0 +1,81 @@
+<div class="overlay" *ngIf="isVisible">
+    <button class="close-btn" (click)="closeOverlay()">X</button>
+    <div class="login" *ngIf="isLogin">
+        <div class="head" >
+            <div  style="padding:10px; ">
+                <h2 style="font-size: 2rem; margin-bottom: 20px;">Login</h2>
+                <div style="font-size: 0.8rem;"><span>or</span><a><button class="toggle" style="margin-left: 5px;" (click)="toggleLoginSignup()">create an account</button></a></div>
+                <hr style="margin-top: 20px;">
+            </div>
+        </div>
+        
+        <form [formGroup]="userLoginDetails" (ngSubmit)="submitLoginForm()">
+            <div class="field">
+                <label for="nameOrEmail">Enter name or email</label>
+                <br>
+                <input type="text" id="nameOrEmail" name="nameOrEmail" formControlName="nameOrEmail">
+                <div class="validation" *ngIf="userLoginDetails.get('nameOrEmail')?.invalid && (userLoginDetails.get('nameOrEmail')?.touched || userLoginDetails.get('nameOrEmail')?.dirty)">
+                    <div *ngIf="userLoginDetails.get('mobile')?.errors?.['required']">Mobile is required</div>
+                    <div *ngIf="userLoginDetails.get('nameOrEmail')?.errors?.['minlength']">Minimum length shoould be 5</div>
+                </div>
+                
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <br>
+                <input type="password" id="password" name="password" formControlName="password">
+                <div class="validation" *ngIf="userLoginDetails.get('password')?.invalid && (userLoginDetails.get('password')?.touched || userLoginDetails.get('password')?.dirty)">
+                    <div *ngIf="userLoginDetails.get('password')?.errors?.['required']">Password is required</div>
+                    <div *ngIf="userLoginDetails.get('password')?.errors?.['minlength']">Minimum length of the password should be 5</div>
+                </div>
+            </div>
+            <button type="submit" [disabled]="disableLogin" [ngClass]="{ 'disabledLogin': disableLogin, 'submit': !disableLogin }">Login</button>
+        </form>
+    </div>
+
+    <div class="signup" *ngIf="isSignUp">
+        <div class="head">
+            <div style="padding:10px;" >
+                <h2 style="font-size: 2rem; margin-bottom: 20px;">Sign Up</h2>
+                <div style="font-size: 0.8rem;"><span>or</span><a><button class="toggle" style="margin-left: 5px;" (click)="toggleLoginSignup()">Login to your account</button></a></div>
+                <hr style="margin-top: 20px;">
+            </div>
+        </div>
+        
+        <form [formGroup]="userRegistrationDetails" (ngSubmit)="submitRegistrationForm()">
+            <div class="field">
+                <label for="name">Name</label>
+                <br>
+                <input type="text" id="name" name="name" formControlName="name">
+                <div class="validation" *ngIf="userRegistrationDetails.get('name')?.invalid && (userRegistrationDetails.get('name')?.touched || userRegistrationDetails.get('name')?.dirty)">
+                    <div *ngIf="userRegistrationDetails.get('name')?.errors?.['required']">Name is required</div>
+                    <div *ngIf="userRegistrationDetails.get('name')?.errors?.['minlength']">Minimum length of the name should be 5</div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="email">Email</label>
+                <br>
+                <input type="text" id="email" name="email" formControlName="email">
+                <div class="validation" *ngIf="userRegistrationDetails.get('email')?.invalid && (userRegistrationDetails.get('email')?.touched || userRegistrationDetails.get('email')?.dirty)">
+                    <div *ngIf="userRegistrationDetails.get('email')?.errors?.['required']">Email is required</div>
+                    <div *ngIf="userRegistrationDetails.get('email')?.errors?.['email']">Enter the correct email</div>
+                </div>
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <br>
+                <input type="password" id="password" name="password" formControlName="password">
+                <div class="validation" *ngIf="userRegistrationDetails.get('password')?.invalid && (userRegistrationDetails.get('password')?.touched || userRegistrationDetails.get('password')?.dirty)">
+                    <div *ngIf="userRegistrationDetails.get('password')?.errors?.['required']">Password is required</div>
+                    <div *ngIf="userRegistrationDetails.get('password')?.errors?.['minlength']">Minimum length of the password should be 5</div>
+                </div>
+            </div>
+            <button type="submit" [disabled]="disableSignin" [ngClass]="{ 'disabledSignin': disableSignin, 'submit': !disableSignin }">Sign Up</button>
+        </form>
+
+    </div>
+
+   
+    
+  </div>

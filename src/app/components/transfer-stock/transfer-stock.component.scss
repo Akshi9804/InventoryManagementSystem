@@ -1,0 +1,77 @@
+.transfer-stock-panel{
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center; // Center content horizontally
+        justify-content: center; // Center content vertically // Full-screen height for vertical centering
+        width: 100%;
+        padding: 50px;
+      
+        .field {
+          width: 100%;
+          max-width: 400px; // Limit field width for better design
+          margin-bottom: 20px; // Space between fields
+          text-align: left;
+      
+          label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+            color: #333; // Dark text color
+          }
+      
+          select,
+          input {
+            width: 100%;
+            padding: 12px 15px; // Comfortable padding
+            border: 1px solid #ccc; // Light border
+            border-radius: 6px; // Rounded corners
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+      
+            &:focus {
+              box-shadow: 0 0 4px rgba(25, 118, 210, 0.2); // Subtle focus shadow
+            }
+          }
+
+          input{
+            width: 92%;
+          }
+      
+          .validation {
+            margin-top: 8px; // Space between input and validation messages
+            font-size: 14px;
+            color: #d32f2f; // Red text for validation errors
+          }
+        }
+      
+        button {
+          width: 100%;
+          max-width: 400px; // Match input field width
+          padding: 12px 20px; // Button padding
+          background-color: rgb(53,94,59); // Primary blue color
+          color: white; // White text color
+          font-size: 16px;
+          font-weight: bold;
+          border: none; // Remove default border
+          border-radius: 6px; // Rounded corners
+          cursor: pointer; // Pointer cursor
+          transition: background-color 0.3s ease, transform 0.2s ease;
+      
+          &:hover {
+            background-color: rgb(53,94,59,0.85); // Darker blue on hover
+          }
+      
+          &:active {
+            transform: scale(0.98); // Slight shrink on click
+          }
+      
+          &:disabled {
+            background-color: #ccc; // Disabled gray background
+            cursor: not-allowed; // Change cursor for disabled state
+          }
+        }
+      }
+      
+}

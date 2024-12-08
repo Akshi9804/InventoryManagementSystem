@@ -1,0 +1,118 @@
+.content{
+  width: 90%;
+  margin: auto;
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px; /* Space between cards */
+    padding: 20px;
+  }
+  .no-data{
+    text-align: center;
+  }
+  .pending-card {
+    flex: 1 1 calc(50% - 16px); /* Ensure 2 cards fit per row */
+    box-sizing: border-box;
+    max-width: 400px; /* Optional: To limit the card width */
+    box-shadow: 0px 0px 3px 1px rgb(200,200,200);
+    padding: 20px;
+    &:hover{
+      transform: scale(1.02);
+    }
+  }
+  .date-range-filter{
+    display: flex;
+    justify-content: center;
+
+    justify-content: space-around;
+    width: 50%;
+    margin: auto;
+  }
+  
+  .tabular-data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    ::ng-deep {
+
+      .mdc-notched-outline > * {
+        border: none !important;
+      }
+
+      table {
+        border-collapse: collapse;
+        font-family: "Lato", serif;
+        font-weight: 400;
+        font-style: normal;
+
+        thead {
+          .mat-mdc-header-row {
+            font-family: "Lato", serif;
+            font-weight: 400;
+            font-style: normal;
+            height: 15px;
+
+            .mat-mdc-header-cell {
+              border: 0px;
+              border-bottom: 2px solid rgb(53,94,59);
+              border-right: 1px solid grey;
+              margin-bottom: 10px;
+            }
+            
+          }
+        }
+
+        tbody {
+          .mat-mdc-row {
+            font-family: "Lato", serif;
+            font-weight: 400;
+            font-style: normal;
+
+            .mat-mdc-cell {
+              border-bottom: 0px;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between; /* Space out the buttons */
+  padding: 8px 16px;
+}
+
+button {
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2); /* Add hover effect */
+}
+.edit-button {
+  background-color: rgb(213, 213, 35);
+}
+.approve-button {
+  background-color: green;
+  color: white !important;
+}
+.decline-button {
+  background-color: rgb(205, 0, 0);
+  color: white !important;
+}
+
+::ng-deep .mat-mdc-tab .mdc-tab-indicator__content--underline {
+  border-color: rgb(53, 94, 59) !important;
+}
+
+::ng-deep .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+  color: black !important;
+}}

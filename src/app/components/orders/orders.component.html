@@ -1,0 +1,166 @@
+
+<div class="content">
+    <mat-tab-group>
+        <mat-tab label="Place Order"> 
+            <form [formGroup]="addOrderForm" (ngSubmit)="addOrder()" style="max-width: 60%;margin: auto;margin-top: 30px;">
+                <!-- Supplier Dropdown -->
+                <div class="field">
+                  <label for="supplier">Supplier</label>
+                  <select id="supplier" formControlName="supplierId">
+                    <option value="" disabled>Select a supplier</option>
+                    <option *ngFor="let supplier of suppliers" [value]="supplier.supplierId">
+                      {{ supplier.name }} (ID: {{ supplier.supplierId }})
+                    </option>
+                  </select>
+                  <div class="validation" *ngIf="addOrderForm.get('supplierId')?.invalid && (addOrderForm.get('supplierId')?.touched || addOrderForm.get('supplierId')?.dirty)">
+                    Supplier is required.
+                  </div>
+                </div>
+              
+                <!-- Item Dropdown -->
+                <div class="field">
+                  <label for="item">Item</label>
+                  <select id="item" formControlName="itemId" [disabled]="items.length === 0">
+                    <option value="" disabled>Select an item</option>
+                    <option *ngFor="let item of items" [value]="item.itemId">
+                      {{ item.name }} (ID: {{ item.itemId }})
+                    </option>
+                  </select>
+                  <div class="validation" *ngIf="addOrderForm.get('itemId')?.invalid && (addOrderForm.get('itemId')?.touched || addOrderForm.get('itemId')?.dirty)">
+                    Item is required.
+                  </div>
+                </div>
+
+                <!-- Location Dropdown -->
+                <div class="field">
+                  <label for="location">Location</label>
+                  <select id="location" formControlName="locId" [disabled]="availableLocations.length === 0">
+                    <option value="" disabled>Select an item</option>
+                    <option *ngFor="let loc of availableLocations" [value]="loc.locId">
+                      {{ loc.locName }}
+                    </option>
+                  </select>
+                  <div class="validation" *ngIf="addOrderForm.get('itemId')?.invalid && (addOrderForm.get('itemId')?.touched || addOrderForm.get('itemId')?.dirty)">
+                    Item is required.
+                  </div>
+                </div>
+              
+                <div class="field">
+                    <label>Order Type</label>
+                    <br>
+                    <div *ngFor="let type of orderTypes">
+                      <label style="font-weight: normal;">
+                        <input
+                          type="radio"
+                          [value]="type"
+                          formControlName="orderType"
+                        />
+                        {{ type }}
+                      </label>
+                    </div>
+                    <div class="validation" *ngIf="addOrderForm.get('orderType')?.invalid && (addOrderForm.get('orderType')?.touched || addOrderForm.get('orderType')?.dirty)">
+                      <div *ngIf="addOrderForm.get('orderType')?.errors?.['required']">Order type is required</div>
+                    </div>
+                  </div>
+              
+                <!-- Quantity -->
+                <div class="field">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" formControlName="quantity" />
+                    <div class="validation" *ngIf="addOrderForm.get('quantity')?.invalid && (addOrderForm.get('quantity')?.touched || addOrderForm.get('quantity')?.dirty)">
+                      <div *ngIf="addOrderForm.get('quantity')?.errors?.['required']">Quantity is required.</div>
+                      <div *ngIf="addOrderForm.get('quantity')?.errors?.['min']">Quantity must be at least 1.</div>
+                    </div>
+                  </div>
+                
+                  <!-- Submit Button -->
+                  <button type="submit" [disabled]="disableAddOrder">Add Order</button>
+                </form>
+              
+              
+        </mat-tab>
+        <mat-tab label="View Orders"> 
+          <div class="no-data">
+            <p *ngIf="orders.length===0">No items are provided</p>
+          </div>
+          <div *ngIf="orders.length>0">
+            <div class="date-range-filter" *ngIf="orders.length>0">
+              <mat-form-field appearance="fill">
+                <mat-label>Start Date</mat-label>
+                <input matInput [matDatepicker]="startDatePicker" [(ngModel)]="startDate" (dateChange)="filterByDateRange()">
+                <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #startDatePicker></mat-datepicker>
+              </mat-form-field>
+          
+              <mat-form-field appearance="fill">
+                <mat-label>End Date</mat-label>
+                <input matInput [matDatepicker]="endDatePicker" [(ngModel)]="endDate" (dateChange)="filterByDateRange()">
+                <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #endDatePicker></mat-datepicker>
+              </mat-form-field>
+          
+            </div>
+              <div class="tabular-data">
+                <table mat-table [dataSource]="dataSource">
+                  <!-- Order ID column -->
+                <ng-container matColumnDef="orderId">
+                  <th mat-header-cell *matHeaderCellDef> Order ID </th>
+                  <td mat-cell *matCellDef="let element"> {{element.orderId}} </td>
+                </ng-container>
+            
+                <!-- Supplier ID Column -->
+                <ng-container matColumnDef="supplierId">
+                  <th mat-header-cell *matHeaderCellDef> Supplier ID </th>
+                  <td mat-cell *matCellDef="let element"> {{element.supplierId}} </td>
+                </ng-container>
+            
+                <!-- Item ID Column -->
+                <ng-container matColumnDef="itemId">
+                  <th mat-header-cell *matHeaderCellDef> Item ID </th>
+                  <td mat-cell *matCellDef="let element"> {{element.itemId}} </td>
+                </ng-container>
+  
+                <!--Order Type Column -->
+                <ng-container matColumnDef="orderType">
+                  <th mat-header-cell *matHeaderCellDef> Order Type </th>
+                  <td mat-cell *matCellDef="let element"> {{element.orderType}} </td>
+                </ng-container>
+          
+                <!-- Quantity Column -->
+                <ng-container matColumnDef="quantity">
+                  <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                  <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+                </ng-container>
+            
+                <!-- Order Date Column -->
+                <ng-container matColumnDef="orderDate">
+                  <th mat-header-cell *matHeaderCellDef> Order Date </th>
+                  <td mat-cell *matCellDef="let element"> {{element.orderDate | customDate}} </td>
+                </ng-container>
+          
+                <!-- Delivery Date Column -->
+                <ng-container matColumnDef="deliveryDate">
+                  <th mat-header-cell *matHeaderCellDef> Delivery Date </th>
+                  <td mat-cell *matCellDef="let element"> {{element.deliveryDate | customDate}} </td>
+                </ng-container>
+          
+                <!--Status Column -->
+                <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef> Status </th>
+                  <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                             showFirstLastButtons
+                             aria-label="Select page of periodic elements">
+              </mat-paginator>
+                </div>
+          </div>
+          
+        </mat-tab>
+      </mat-tab-group>
+</div>

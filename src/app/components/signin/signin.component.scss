@@ -1,0 +1,94 @@
+.overlay {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background-color: white;
+    padding: 40px;
+    transition: transform 1s ease; 
+    
+  }
+  
+  .slide-in {
+    transform: translateX(0); 
+  }
+  
+  .slide-out {
+    transform: translateX(100%); 
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+.error{
+  background-color: rgb(217, 0, 0);
+  opacity: 0.7;
+  color: white;
+  padding: 10px;
+  position: absolute;
+  right: 0;top: 20px;
+  display: flex;
+  z-index: 1;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+.toggle{
+  border: none;
+  background-color: transparent;
+  color: rgb(53,94,59);
+  font-weight: bold;
+}
+
+.head{
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  width: 70%;
+}
+input{
+  width: 70%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid rgb(99, 99, 99);
+}
+.field{
+  margin-bottom: 20px;
+}
+.submit{
+  width: 75%;
+  background-color: black;
+  padding: 15px;
+  color: white;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+label{
+  font-size: 1.1rem;
+  color: rgb(99, 99, 99);
+}
+.validation{
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.disabledLogin, .disabledSignin{
+width: 75%;
+  background-color: grey;
+  opacity: 0.7;
+  padding: 15px;
+  color: white;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+}

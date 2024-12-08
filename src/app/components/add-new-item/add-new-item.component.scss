@@ -1,0 +1,109 @@
+.dialog-content {
+    padding: 20px; /* Add padding to the dialog content */
+    max-height: calc(100vh - 150px); /* Ensure it fits within the viewport */
+    overflow: hidden; /* Disable scrollbars */
+  }
+
+  .mat-mdc-dialog-title{
+    color: rgb(53,94,59);
+    padding-left: 15px;
+    font-weight: bold;
+  }
+  
+  .field {
+    margin-bottom: 15px;
+  
+    label {
+      font-weight: bold; 
+      margin-bottom: 5px;
+      display: inline-block;
+    }
+    input:disabled{
+        background-color: rgba(225, 225, 225, 0.612);
+    }
+    .add-loc-btn{
+        background-color: rgb(53,94,59);
+        border: transparent;
+        padding: 8px;
+        margin-top: 5px;
+        border-radius: 5px;
+        color: white;
+    }
+
+    .location-select{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .remove-loc-btn{
+        background-color: rgb(226, 0, 0);
+        border: transparent;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        color: white;
+        margin-left: 5px;
+    }
+  
+    input,select {
+      width: 90%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    select{
+      width: 70%;
+    }
+  
+    .validation {
+      color: #d32f2f; /* Error messages in red */
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  
+    .cancel-btn {
+      background-color: rgb(232, 232, 232); /* Red color for cancel */
+      color: rgb(53,94,59);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: rgba(54, 94, 59, 0.34); /* Darker red on hover */
+      }
+    }
+  
+    .submit-btn {
+      background-color: rgb(53,94,59); /* Green color for submit */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: rgb(53,94,59,0.85); 
+      }
+  
+      &:disabled {
+        background-color: rgb(125, 152, 129); 
+        cursor: not-allowed;
+      }
+    }
+  }
+  

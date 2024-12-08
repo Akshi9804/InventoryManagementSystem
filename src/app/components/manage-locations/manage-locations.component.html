@@ -1,0 +1,22 @@
+<div class="manage-locations-panel">
+    <div class="functions" *ngIf="isAdmin">
+        <a [class.active]="isActive('/task/location')" routerLink="/task/location">
+            <div class="function">
+                <p>View Locations</p>
+            </div>
+        </a>
+        <a [class.active]="isActive('/task/location/stock-transfer')" routerLink="/task/location/stock-transfer">
+            <div class="function">
+                <p>Transfer Stock</p>
+            </div>
+        </a>
+        <a [class.active]="isActive('/task/location/stock-transfer-logs')" routerLink="/task/location/stock-transfer-logs">
+            <div class="function">
+                <p>Stock Transfer Logs</p>
+            </div>
+        </a>
+    </div>
+    <div class="child">
+        <router-outlet></router-outlet>
+    </div>
+</div>

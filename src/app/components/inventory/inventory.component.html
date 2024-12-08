@@ -1,0 +1,87 @@
+<div class="inventory_panel">
+  <button *ngIf="isAdmin" class="addItemButton" (click)="openAddItem()">Add New Item</button>
+  <h1>Inventory</h1>
+  <div class="no-data">
+    <p *ngIf="items.length===0">No items are provided</p>
+  </div>
+  <div *ngIf="items.length>0">
+    <div class="filters">
+      <!-- Category Filter -->
+      <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+        <mat-select [(value)]="selectedCategory" (selectionChange)="applyFilters()">
+          <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Quantity Filter -->
+      <mat-form-field appearance="fill">
+        <mat-label>Quantity</mat-label>
+        <mat-select [(value)]="selectedQuantity" (selectionChange)="applyFilters()">
+          <mat-option value="low">Low (< 100)</mat-option>
+          <mat-option value="medium">Medium (100 - 500)</mat-option>
+          <mat-option value="high">High (> 500)</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  
+    <div class="tabular-data">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Item ID column -->
+        <ng-container matColumnDef="itemId">
+          <th mat-header-cell *matHeaderCellDef> Item ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.itemId}} </td>
+        </ng-container>
+  
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+  
+        <!-- Category Column -->
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef> Category </th>
+          <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+        </ng-container>
+  
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef> Quantity </th>
+          <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+        </ng-container>
+  
+        <!-- Price Column -->
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef> Price </th>
+          <td mat-cell *matCellDef="let element"> {{element.price | price}} </td>
+        </ng-container>
+  
+        <!-- Reorder Level Column -->
+        <ng-container matColumnDef="reorderLevel">
+          <th mat-header-cell *matHeaderCellDef> Reorder Level </th>
+          <td mat-cell *matCellDef="let element"> {{element.reorderLevel}} </td>
+        </ng-container>
+  
+        <!-- Last Updated Column -->
+        <ng-container matColumnDef="lastUpdated">
+          <th mat-header-cell *matHeaderCellDef> Last Updated </th>
+          <td mat-cell *matCellDef="let element"> {{element.lastUpdated | customDate}} </td>
+        </ng-container>
+  
+        <!--View Supplier Column -->
+        <ng-container matColumnDef="viewItem">
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let element"> <a
+              [routerLink]="['/task/inventory', element.itemId]"><mat-icon>open_in_new</mat-icon></a> </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  </div>
+  
+</div>

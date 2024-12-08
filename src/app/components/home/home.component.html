@@ -1,0 +1,21 @@
+<div class="home">
+    <img class="background-img" src="../../../assets/images/home1.jpg" width="100%">
+    <div class="content">
+        <div class="nav-bar">
+            <ul>
+                <li><img src="../../../assets/images/icon2.png" width="300px"></li>
+
+                <li *ngIf="!this.isLoggedIn" (click)="showSignIn()"><button>Sign in</button></li>
+                <li *ngIf="this.isLoggedIn" (click)="signOut()"><button>Sign Out</button></li>
+            </ul>
+        </div>
+
+        <div class="text-content">
+            <h1>Effortless Inventory Management for Your Business</h1>
+            <p>Streamline your operations and gain complete control over your stock with our advanced inventory
+                management system. Track items, optimize storage, and make data-driven decisions—all from one intuitive
+                platform. Simplify inventory like never before</p>
+        </div>
+    </div>
+    <app-signin #signin></app-signin>
+</div>

@@ -1,0 +1,59 @@
+<div class="transfer-stock-panel">
+    <form [formGroup]="stockTransferForm" (ngSubmit)="submitStockTransferForm()" style="max-width: 60%;margin: auto;margin-top: 30px;">
+        <!-- Supplier Dropdown -->
+        <div class="field">
+          <label for="item">Item</label>
+          <select id="item" formControlName="itemId">
+            <option value="" disabled>Select a supplier</option>
+            <option *ngFor="let item of items" [value]="item.itemId">
+              {{ item.name }} (ID: {{ item.itemId }})
+            </option>
+          </select>
+          <div class="validation" *ngIf="stockTransferForm.get('itemId')?.invalid && (stockTransferForm.get('itemId')?.touched || stockTransferForm.get('itemId')?.dirty)">
+            Item is required.
+          </div>
+        </div>
+      
+        <!-- From Location Dropdown -->
+        <div class="field">
+          <label for="from">From Location</label>
+          <select id="from" formControlName="from" [disabled]="fromLocations.length === 0">
+            <option value="" disabled>Select a From Location</option>
+            <option *ngFor="let loc of fromLocations" [value]="loc.locId">
+              {{ loc.locName }}
+            </option>
+          </select>
+          <div class="validation" *ngIf="stockTransferForm.get('from')?.invalid && (stockTransferForm.get('from')?.touched || stockTransferForm.get('from')?.dirty)">
+            From location is required.
+          </div>
+        </div>
+
+        <!-- To Location Dropdown -->
+        <div class="field">
+            <label for="to"> To Location</label>
+            <select id="to" formControlName="to" [disabled]="toLocations.length === 0">
+              <option value="" disabled>Select a To Location</option>
+              <option *ngFor="let loc of toLocations" [value]="loc.locId">
+                {{ loc.locName }}
+              </option>
+            </select>
+            <div class="validation" *ngIf="stockTransferForm.get('to')?.invalid && (stockTransferForm.get('to')?.touched || stockTransferForm.get('to')?.dirty)">
+              To location is required.
+            </div>
+          </div>
+
+      
+        <!-- Quantity -->
+        <div class="field">
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" formControlName="quantity" />
+            <div class="validation" *ngIf="stockTransferForm.get('quantity')?.invalid && (stockTransferForm.get('quantity')?.touched || stockTransferForm.get('quantity')?.dirty)">
+              <div *ngIf="stockTransferForm.get('quantity')?.errors?.['required']">Quantity is required.</div>
+              <div *ngIf="stockTransferForm.get('quantity')?.errors?.['min']">Quantity must be at least 1.</div>
+            </div>
+          </div>
+        
+          <!-- Submit Button -->
+          <button type="submit" [disabled]="disableStockTransferButton">Transfer Stock</button>
+        </form>
+</div>

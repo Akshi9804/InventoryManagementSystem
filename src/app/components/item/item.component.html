@@ -1,0 +1,41 @@
+<div class="item-details">
+  <div class="header">
+    <h2>{{item?.itemId}}</h2>
+    
+  </div>
+    
+    <div class="data">
+      <div class="details">
+        <h3><b>Item Name:</b> {{item?.name}}</h3>
+        <h3><b>Category: </b>{{item?.category}}</h3>
+        <h3><b>Quantity:</b> {{item?.quantity}}</h3>
+        <h3><b>Price:</b> {{item?.price | price}}</h3>
+        <h3><b>Reorder Level:</b> {{item?.reorderLevel}}</h3> 
+        <h3><b>Last Updated:</b> {{item?.lastUpdated | customDate}}</h3>
+        <div *ngIf="isAdmin">
+          <button *ngIf="isAdmin" (click)="openEditItem()"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon></button>
+          <button *ngIf="isAdmin" (click)="openConfirmationDialogForDelete()"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon></button>
+        </div>
+      </div>
+      <div class="barcode">
+        <div class="barcode-btn-container">
+          <button class="barcode-btn" (click)="getBarcode()">Get Barcode</button>
+        </div>
+        
+        <div class="barcode-img" *ngIf="isBarcode">
+          <img [src]="barcodeUrl" alt="Barcode for the item" />
+        </div>
+      </div>
+    </div>
+    
+    <div class="locations">
+      <h3>Locations Available:</h3>
+        <div class="loc" *ngFor="let loc of locations">
+          <p >{{ loc }}</p>
+        </div>
+    </div>
+    
+   
+    
+</div>
+

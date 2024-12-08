@@ -1,0 +1,43 @@
+.manage-locations-panel{
+    margin-top: 30px;
+    .functions{
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin: auto;
+        a{
+            text-decoration: none;
+            
+            div{
+                width: 350px;
+                background-color: rgba(53, 94, 59, 0.89);
+                height: 100px;
+                color: white;
+                display: flex;
+                align-items: center;
+                font-size: 1.2rem;
+                border-radius: 5px;
+                &.active {
+                    background-color: rgba(41, 73, 46, 0.85); // Highlight active item
+                  }
+              
+                  &:hover {
+                    background-color: rgb(44, 76, 48); // Lighter hover effect
+                  }
+                p{
+                    margin: auto;
+                }
+            } 
+            
+        }
+    }
+    .child{
+        width: 90%;
+        height: 100%;
+        margin: auto;
+        border-radius: 5px;
+        margin-top: 30px;
+        border: 1px solid rgb(189, 189, 189);
+    }
+
+}

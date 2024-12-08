@@ -1,0 +1,66 @@
+<div style="padding: 20px;">
+    <h2 mat-dialog-title>Add New Location</h2>
+<mat-dialog-content class="dialog-content">
+  <form [formGroup]="addLocationForm" (ngSubmit)="addLocation()">
+    <!-- Name Field -->
+    <div class="field">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" formControlName="name" />
+      <div
+        class="validation"
+        *ngIf="
+          addLocationForm.get('name')?.invalid &&
+          (addLocationForm.get('name')?.touched || addLocationForm.get('name')?.dirty)
+        "
+      >
+        <div *ngIf="addLocationForm.get('name')?.errors?.['required']">
+          Name is required
+        </div>
+        <div *ngIf="addLocationForm.get('name')?.errors?.['minlength']">
+          Minimum length of the name should be 5
+        </div>
+      </div>
+    </div>
+
+    <!-- address Field -->
+    <div class="field">
+      <label for="address">Address</label>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        formControlName="address"
+      />
+      <div
+        class="validation"
+        *ngIf="
+          addLocationForm.get('address')?.invalid &&
+          (addLocationForm.get('address')?.touched ||
+            addLocationForm.get('address')?.dirty)
+        "
+      >
+        <div *ngIf="addLocationForm.get('address')?.errors?.['required']">
+          Address is required
+        </div>
+        <div *ngIf="addLocationForm.get('address')?.errors?.['minlength']">
+          Minimum length of the address should be 5
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="actions">
+  <button mat-button type="button" class="cancel-btn" (click)="close()">Cancel</button>
+  <button
+    mat-button
+    color="primary"
+    class="submit-btn"
+    [disabled]="addLocationForm.invalid"
+    (click)="addLocation()"
+  >
+    Submit
+  </button>
+</mat-dialog-actions>
+
+</div>

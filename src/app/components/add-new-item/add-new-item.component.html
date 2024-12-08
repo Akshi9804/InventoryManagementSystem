@@ -1,0 +1,97 @@
+<div style="padding: 20px;">
+    <h2 mat-dialog-title>Edit Item</h2>
+  <mat-dialog-content>
+    <form [formGroup]="addItemForm" (ngSubmit)="addItem()">
+  
+      <!-- Name -->
+      <div class="field">
+        <label for="name">Name</label>
+        <br />
+        <input type="text" id="name" name="name" formControlName="name"  />
+      </div>
+  
+      <!-- Category -->
+      <div class="field">
+        <label for="category">Category</label>
+        <br />
+        <input type="text" id="category" name="category" formControlName="category" />
+        <div
+          class="validation"
+          *ngIf="addItemForm.get('category')?.invalid && (addItemForm.get('category')?.touched || addItemForm.get('category')?.dirty)"
+        >
+          <div *ngIf="addItemForm.get('category')?.errors?.['required']">Category is required</div>
+          <div *ngIf="addItemForm.get('category')?.errors?.['minlength']">
+            Minimum length of the category should be 5
+          </div>
+        </div>
+      </div>
+  
+      <!-- Quantity -->
+      <div class="field">
+        <label for="quantity">Quantity</label>
+        <br />
+        <input type="number" id="quantity" name="quantity" formControlName="quantity" />
+        <div
+          class="validation"
+          *ngIf="addItemForm.get('quantity')?.invalid && (addItemForm.get('quantity')?.touched || addItemForm.get('quantity')?.dirty)"
+        >
+        </div>
+      </div>
+  
+      <!-- Price -->
+      <div class="field">
+        <label for="price">Price</label>
+        <br />
+        <input type="number" id="price" name="price" formControlName="price" />
+        <div
+          class="validation"
+          *ngIf="addItemForm.get('price')?.invalid && (addItemForm.get('price')?.touched || addItemForm.get('price')?.dirty)"
+        >
+          <div *ngIf="addItemForm.get('price')?.errors?.['required']">Price is required</div>
+          <div *ngIf="addItemForm.get('price')?.errors?.['min']">Price must be greater than 0</div>
+        </div>
+      </div>
+  
+      <!-- Locations -->
+      <div class="field">
+        <label for="locations">Locations</label>
+        <div formArrayName="availableLocations">
+          <div class="location-select" *ngFor="let locationCtrl of locationsFormArray.controls; let i = index" class="location-row">
+            <select [formControlName]="i">
+              <option value="" disabled>Select Location</option>
+              <option *ngFor="let location of locations" [value]="location.locId">
+                {{ location.name }}
+              </option>
+            </select>
+            <button class="remove-loc-btn" type="button" (click)="removeLocation(i)">Remove</button>
+          </div>
+        </div>
+        <button class="add-loc-btn" type="button" (click)="addLocation()">Add Location</button>
+      </div>
+  
+      <!-- Reorder Level -->
+      <div class="field">
+        <label for="reorderLevel">Reorder Level</label>
+        <br />
+        <input type="number" id="reorderLevel" name="reorderLevel" formControlName="reorderLevel" />
+        <div
+          class="validation"
+          *ngIf="addItemForm.get('reorderLevel')?.invalid && (addItemForm.get('reorderLevel')?.touched || addItemForm.get('reorderLevel')?.dirty)"
+        >
+          <div *ngIf="addItemForm.get('reorderLevel')?.errors?.['required']">Reorder level is required</div>
+          <div *ngIf="addItemForm.get('reorderLevel')?.errors?.['min']">
+            Reorder level must be 1 or greater
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions class="actions">
+    <button mat-button class="cancel-btn" (click)="close()">Cancel</button>
+    <button mat-button class="submit-btn" [disabled]="addItemForm.invalid" (click)="addItem()">Submit</button>
+  </mat-dialog-actions>
+  
+  
+  </div>
+  

@@ -1,0 +1,128 @@
+<div class="dashboard_pane">
+  <div class="user">
+    <div>
+      <h1>
+        Hello <span>{{ user.name }}!</span>
+      </h1>
+      <p>{{user.role | titlecase}} </p>
+    </div>
+
+    <div class="btn-container">
+      <button (click)="signOut()">Sign Out</button>
+    </div>
+  </div>
+  <div class="admin-dashboard" *ngIf="user.role==='admin'">
+    <div class="reports">
+      <div class="chart-item bar_chart">
+        <canvas id="chart_1" height="320px" width="750px"></canvas>
+      </div>
+      <div class="chart-item">
+        <canvas id="chart_2" height="290px"></canvas>
+      </div>
+
+      <div class="chart-item review_pane">
+        <div class="reviews-header">
+          <p>Comments</p>
+        </div>
+        <div class="no-data" *ngIf="displayedNotifications.length==0">
+          <p>No reviews available</p>
+        </div>
+        <div *ngIf="reviews.length>0">
+          <div class="reviews" *ngFor="let review of reviews">
+            <div class="review-card">
+              <div class="review-user">{{ review.locName }}</div>
+              <div class="review-text">{{ review.review }}</div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+
+      <div class="chart-item alert_pane">
+        <div class="alert_pane_head">
+          <span class="material-symbols-outlined">
+            notifications_active
+          </span>
+          <mat-checkbox [(ngModel)]="showRead" (change)="filterNotifications()">Show Read Notifications</mat-checkbox>
+        </div>
+        <div class="no-data">
+          <p *ngIf="displayedNotifications.length==0">No notifications</p>
+        </div>
+        
+        <div *ngIf="displayedNotifications.length>0">
+          <div class="notifications" *ngFor="let notification of displayedNotifications">
+            <div class="notification" [class.unread]="!notification.read">
+              <div class="not-head">
+                <h4>{{ notification.alertType }}</h4>
+                <button (click)="markAsRead(notification.notificationId)" *ngIf="!notification.read">Mark as read</button>
+              </div>
+  
+              <p>{{ notification.message }}</p>
+              <small>{{ notification.timeStamp | date: 'medium' }}</small>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="chart-item ai_integrate">
+        <div class="option_selection_pane">
+          <select (change)="onSelectionChange($event)">
+            <option value="">-- Select an Option --</option>
+            <option value="orderSupplier">Order Supplier Analytics</option>
+            <!-- Add more options here -->
+          </select>
+        </div>
+        <p class="response">
+          {{ analysisResponse }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="staff-dashboard" *ngIf="user.role==='staff'">
+    <div class="notifications_pane">
+      <div class="notifications_pane_head">
+        <span class="material-symbols-outlined">
+          notifications_active
+        </span>
+        <mat-checkbox [(ngModel)]="showRead" (change)="filterNotifications()">Show Read Notifications</mat-checkbox>
+      </div>
+      <div class="no-data">
+        <p *ngIf="displayedNotifications.length==0">No notifications</p>
+      </div>
+      <div *ngIf="displayedNotifications.length>0">
+        <div class="notifications_staff" *ngFor="let notification of displayedNotifications">
+          <div class="notification_staff" [class.unread]="!notification.read">
+            <div class="not_head_staff">
+              <h4>{{ notification.alertType }}</h4>
+              <button class="not_button-staff" (click)="markAsRead(notification.notificationId)"
+                *ngIf="!notification.read">Mark as read</button>
+            </div>
+  
+            <p>{{ notification.message }}</p>
+            <small>{{ notification.timeStamp | date: 'medium' }}</small>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class=" feedback_pane">
+      <div class="feedback-header">
+        <p>Write Feedback</p>
+      </div>
+      <div class="feedback-form">
+        <label for="location">Select Location:</label>
+        <select id="location" [(ngModel)]="selectedLocation">
+          <option *ngFor="let location of locations" [value]="location.name">{{ location.name }}</option>
+        </select>
+
+        <textarea placeholder="Enter your feedback here..." [(ngModel)]="feedbackText"></textarea>
+        <button (click)="submitFeedback()">Submit</button>
+      </div>
+      <div class="feedback-status" *ngIf="feedbackStatus">
+        <p>{{ feedbackStatus }}</p>
+      </div>
+    </div>
+
+  </div>

@@ -1,0 +1,405 @@
+.dashboard_pane {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    span {
+      color: rgb(53, 94, 59);
+    }
+  }
+
+  p {
+    background-color: black;
+    color: white;
+    // font-weight: bold;
+    padding: 4px;
+    width: 30%;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  .btn-container {
+    button {
+      border: transparent;
+      border-radius: 5px;
+      background-color: black;
+      color: white;
+      padding: 10px 16px;
+      transition: all 1s ease;
+      font-weight: bold;
+
+      &:hover {
+        opacity: 0.85;
+        transform: scale(1.02);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.admin-dashboard {
+  .reports {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    .chart-item {
+      height: 320px;
+      background-color: whitesmoke;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 22vw;
+      margin-bottom: 20px;
+
+      &.bar_chart {
+        width: 57vw;
+      }
+
+      &.review_pane {
+        width: 35vw;
+      }
+    }
+
+    .review_pane {
+      width: 100%;
+      padding: 0px;
+      max-width: 600px;
+      max-height: 320px;
+      overflow: scroll;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .reviews-header p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      color: rgb(53, 94, 59);
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    .review-card {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease-in-out;
+      width: 90%;
+    }
+
+    .review-card:hover {
+      transform: scale(1.02);
+    }
+
+    .review-user {
+      font-size: 1rem;
+      font-weight: bold;
+      color: rgb(53, 94, 59);
+      margin-bottom: 5px;
+    }
+
+    .review-text {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .review_pane::-webkit-scrollbar {
+      width: 8px;
+      /* Width of the vertical scrollbar */
+    }
+
+    .review_pane::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      /* Light background for the scrollbar track */
+      border-radius: 8px;
+      /* Rounded track corners */
+    }
+
+    .review_pane::-webkit-scrollbar-thumb {
+      background-color: #007bff;
+      /* Match the location (username) color */
+      border-radius: 8px;
+      /* Rounded scrollbar corners */
+      border: 2px solid #f9f9f9;
+      /* Space between thumb and track for a clean look */
+    }
+
+    .review_pane::-webkit-scrollbar-thumb:hover {
+      background-color: #0056b3;
+      /* Darker shade of blue on hover */
+    }
+
+
+    .alert_pane {
+      overflow-y: auto;
+      /* Enable vertical scrolling */
+      overflow-x: hidden;
+
+      .alert_pane_head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        padding: 5px;
+
+        .material-symbols-outlined {
+          color: green;
+          font-size: 1.6rem;
+        }
+
+
+      }
+
+      .notification {
+        box-shadow: 0px 0px 3px 0px rgb(166, 166, 166);
+        width: 300px;
+        margin-bottom: 10px;
+        padding: 10px;
+        transition: transform 0.2s ease-in-out;
+
+        .not-head {
+          display: flex;
+          justify-content: space-between;
+
+          button {
+            border: transparent;
+            background-color: whitesmoke;
+            color: green;
+            font-weight: bold;
+            cursor: pointer;
+          }
+
+          h4 {
+            font-weight: bold;
+            margin-bottom: 2px;
+          }
+        }
+
+        p {
+          margin-bottom: 2px;
+        }
+
+        small {
+          display: flex;
+          justify-content: end;
+        }
+
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        /* Light background for the scrollbar track */
+        border-radius: 8px;
+        /* Rounded track corners */
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: rgb(200, 200, 200);
+        /* Blue scrollbar thumb */
+        border-radius: 8px;
+        border: 2px solid #f9f9f9;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background-color: rgb(150, 150, 150);
+        /* Darker shade on hover */
+      }
+    }
+    .ai_integrate{
+      overflow-x: none;
+      overflow-y: scroll;
+    }
+
+  }
+}
+
+
+$primary-color: #4CAF50;
+$secondary-color: #F5F5F5;
+$chat-bubble-color: #0084ff;
+$bot-message-color: #d3d3d3;
+$user-message-color: #ffffff;
+$font-family: 'Arial', sans-serif;
+$border-radius: 10px;
+
+.option_selection_pane {
+  padding: 10px;
+  font-family: $font-family;
+  background-color: $secondary-color;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: $border-radius;
+  border: 1px solid #ccc;
+}
+
+select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: $border-radius;
+  border: 1px solid $primary-color;
+  background-color: $secondary-color;
+  color: #333;
+  width: 100%;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+  }
+}
+
+.response {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: $bot-message-color;
+  color: #333;
+  border-radius: $border-radius;
+  max-width: 70%;
+  word-wrap: break-word;
+  font-size: 14px;
+  white-space: pre-wrap; /* Allows multiline response */
+}
+
+.response::before {
+  content: 'Response: ';
+  font-weight: bold;
+  color: $primary-color;
+}
+
+.staff-dashboard {
+  display: flex;
+  justify-content: space-between;
+  height: 500px;
+
+  .notifications_pane {
+    width: 43%;
+    background-color: whitesmoke;
+    padding: 30px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .notifications_pane_head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      padding: 5px;
+
+      .material-symbols-outlined {
+        color: green;
+        font-size: 1.6rem;
+
+      }
+
+      .notification_staff {
+        box-shadow: 0px 0px 3px 0px rgb(166, 166, 166);
+        width: 300px;
+        margin-bottom: 10px;
+        padding: 10px;
+        transition: transform 0.2s ease-in-out;
+
+        .not_head_staff {
+          display: flex;
+          justify-content: space-between;
+
+          .not_button_staff {
+            border: transparent;
+            background-color: whitesmoke;
+            color: green;
+            font-weight: bold;
+            cursor: pointer;
+          }
+
+          h4 {
+            font-weight: bold;
+            margin-bottom: 2px;
+          }
+        }
+
+        p {
+          margin-bottom: 2px;
+        }
+
+        small {
+          display: flex;
+          justify-content: end;
+        }
+
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+
+
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        /* Light background for the scrollbar track */
+        border-radius: 8px;
+        /* Rounded track corners */
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: rgb(200, 200, 200);
+        /* Blue scrollbar thumb */
+        border-radius: 8px;
+        border: 2px solid #f9f9f9;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background-color: rgb(150, 150, 150);
+        /* Darker shade on hover */
+      }
+    }
+  }
+
+  .feedback_pane {
+    background-color: whitesmoke;
+    padding: 30px;
+
+    .feedback_header {
+      p {
+        font-weight: bold;
+      }
+
+    }
+
+    .feedback_form {
+      width: 100%;
+    }
+  }
+}

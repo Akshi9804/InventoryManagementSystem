@@ -1,0 +1,66 @@
+<div style="padding: 20px;">
+    <h2 mat-dialog-title>Add New Item</h2>
+<mat-dialog-content class="dialog-content">
+  <form [formGroup]="addItemForm" (ngSubmit)="addItem()">
+    <!-- Name Field -->
+    <div class="field">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" formControlName="name" />
+      <div
+        class="validation"
+        *ngIf="
+          addItemForm.get('name')?.invalid &&
+          (addItemForm.get('name')?.touched || addItemForm.get('name')?.dirty)
+        "
+      >
+        <div *ngIf="addItemForm.get('name')?.errors?.['required']">
+          Name is required
+        </div>
+        <div *ngIf="addItemForm.get('name')?.errors?.['minlength']">
+          Minimum length of the name should be 5
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Field -->
+    <div class="field">
+      <label for="category">Category</label>
+      <input
+        type="text"
+        id="category"
+        name="category"
+        formControlName="category"
+      />
+      <div
+        class="validation"
+        *ngIf="
+          addItemForm.get('category')?.invalid &&
+          (addItemForm.get('category')?.touched ||
+            addItemForm.get('category')?.dirty)
+        "
+      >
+        <div *ngIf="addItemForm.get('category')?.errors?.['required']">
+          Category is required
+        </div>
+        <div *ngIf="addItemForm.get('category')?.errors?.['minlength']">
+          Minimum length of the category should be 5
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="actions">
+  <button mat-button type="button" class="cancel-btn" (click)="close()">Cancel</button>
+  <button
+    mat-button
+    color="primary"
+    class="submit-btn"
+    [disabled]="addItemForm.invalid"
+    (click)="addItem()"
+  >
+    Submit
+  </button>
+</mat-dialog-actions>
+
+</div>

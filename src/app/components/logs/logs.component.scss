@@ -1,0 +1,110 @@
+// General styling for the table container
+.date-range-filter{
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  width: 50%;
+  margin: auto;
+}
+
+.no-data{
+  text-align: center;
+}
+  
+  // Styling for the table
+  .tabular-data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+
+    ::ng-deep {
+
+      .mdc-notched-outline > * {
+        border: none !important;
+      }
+
+      table {
+        border-collapse: collapse;
+        font-family: "Lato", serif;
+        font-weight: 400;
+        font-style: normal;
+
+        thead {
+          .mat-mdc-header-row {
+            font-family: "Lato", serif;
+            font-weight: 400;
+            font-style: normal;
+            height: 15px;
+
+            .mat-mdc-header-cell {
+              border: 0px;
+              border-bottom: 2px solid rgb(53,94,59);
+              border-right: 1px solid grey;
+              margin-bottom: 10px;
+            }
+            
+          }
+        }
+
+        tbody {
+          .mat-mdc-row {
+            font-family: "Lato", serif;
+            font-weight: 400;
+            font-style: normal;
+
+            .mat-mdc-cell {
+              border-bottom: 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+  // Paginator styling
+  mat-paginator {
+    margin-top: 20px;
+    margin-left: -34vw; // Add spacing above paginator
+  }
+  
+  // Button styling
+  .add-supplier {
+    background-color: rgb(53,94,59); // Blue background
+    color: white; // White text
+    border: none; // Remove border
+    border-radius: 4px; // Slightly rounded corners
+    padding: 8px 16px; // Button padding
+    font-size: 14px; // Font size
+    font-weight: 500; // Slightly bold font
+    text-transform: uppercase; // Capitalized text
+    cursor: pointer; // Pointer cursor on hover
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; // Smooth transitions
+    margin-left: auto;  // Push button to the right
+    display: block;
+    margin-bottom: 20px;
+  
+  
+    &:hover {
+      background-color: rgb(53,94,59,0.8); // Darker blue on hover
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // Subtle shadow on hover
+    }
+  
+    &:focus {
+      outline: none; // Remove default outline
+      box-shadow: 0 0 0 2px rgba(200,200,200); // Focus ring
+    }
+  }
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: rgb(53,94,59);
+    margin-top: 30px;
+    /* Matching blue header color */
+  }
+  
+  
+  

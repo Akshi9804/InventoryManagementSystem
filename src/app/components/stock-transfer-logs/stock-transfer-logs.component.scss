@@ -1,0 +1,87 @@
+.logs-panel{
+// General styling for the table container
+padding: 30px;
+
+.date-range-filter{
+  display: flex;
+  justify-content: center;
+
+  justify-content: space-around;
+  width: 50%;
+  margin: auto;
+}
+  // Styling for the table
+  .tabular-data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+
+    ::ng-deep {
+
+      .mdc-notched-outline > * {
+        border: none !important;
+      }
+
+      table {
+        border-collapse: collapse;
+        font-family: "Lato", serif;
+        font-weight: 400;
+        font-style: normal;
+
+        thead {
+          .mat-mdc-header-row {
+            font-family: "Lato", serif;
+            font-weight: 400;
+            font-style: normal;
+            height: 15px;
+
+            .mat-mdc-header-cell {
+              border: 0px;
+              border-bottom: 2px solid rgb(53,94,59);
+              border-right: 1px solid grey;
+              margin-bottom: 10px;
+            }
+            
+          }
+        }
+
+        tbody {
+          .mat-mdc-row {
+            font-family: "Lato", serif;
+            font-weight: 400;
+            font-style: normal;
+
+            .mat-mdc-cell {
+              border-bottom: 0px;
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+  // Paginator styling
+  mat-paginator {
+    margin-top: 20px;
+    margin-left: -2vw; // Add spacing above paginator
+  }
+
+
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: rgb(53,94,59);
+    /* Matching blue header color */
+  }
+}
+
+
+  
+  
+  

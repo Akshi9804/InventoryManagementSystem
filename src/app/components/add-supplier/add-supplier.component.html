@@ -1,0 +1,50 @@
+<div class="add-supplier">
+    <form [formGroup]="addSupplierForm" (ngSubmit)="addSupplier()">
+        <div class="field">
+            <label for="name">Name</label>
+            <br>
+            <input type="text" id="name" name="name" formControlName="name">
+            <div class="validation" *ngIf="addSupplierForm.get('name')?.invalid && (addSupplierForm.get('name')?.touched || addSupplierForm.get('name')?.dirty)">
+                <div *ngIf="addSupplierForm.get('name')?.errors?.['required']">Name is required</div>
+                <div *ngIf="addSupplierForm.get('name')?.errors?.['minlength']">Minimum length of the name should be 5</div>
+            </div>
+        </div>
+        <div class="field">
+            <label for="email">Email</label>
+            <br>
+            <input type="text" id="email" name="email" formControlName="email">
+            <div class="validation" *ngIf="addSupplierForm.get('email')?.invalid && (addSupplierForm.get('email')?.touched || addSupplierForm.get('email')?.dirty)">
+                <div *ngIf="addSupplierForm.get('email')?.errors?.['required']">Email is required</div>
+                <div *ngIf="addSupplierForm.get('email')?.errors?.['email']">Enter the correct email</div>
+            </div>
+        </div>
+        <div class="field">
+            <label for="mobile">Phone Number</label>
+            <br>
+            <input type="text" id="mobile" name="mobile" formControlName="mobile">
+            <div class="validation" *ngIf="addSupplierForm.get('mobile')?.invalid && (addSupplierForm.get('mobile')?.touched || addSupplierForm.get('mobile')?.dirty)">
+                <div *ngIf="addSupplierForm.get('mobile')?.errors?.['required']">Mobile is required</div>
+                <div *ngIf="addSupplierForm.get('mobile')?.errors?.['pattern']">Enter correct mobile number</div>
+            </div>
+        </div>
+        
+        <div class="field">
+            <label for="address">Address</label>
+            <br>
+            <input type="text" id="address" name="address" formControlName="address">
+            <div class="validation" *ngIf="addSupplierForm.get('address')?.invalid && (addSupplierForm.get('address')?.touched || addSupplierForm.get('address')?.dirty)">
+                <div *ngIf="addSupplierForm.get('address')?.errors?.['required']">Password is required</div>
+                <div *ngIf="addSupplierForm.get('address')?.errors?.['minlength']">Minimum length of the password should be 5</div>
+            </div>
+        </div>
+        <div class="field">
+            <label for="delivery">Delivery in days</label>
+            <br>
+            <input type="text" id="delivery" name="delivery" formControlName="deliveryInDays">
+            <div class="validation" *ngIf="addSupplierForm.get('deliveryInDays')?.invalid && (addSupplierForm.get('deliveryInDays')?.touched || addSupplierForm.get('deliveryInDays')?.dirty)">
+                <div *ngIf="addSupplierForm.get('deliveryInDays')?.errors?.['required']">Password is required</div>
+            </div>
+        </div>
+        <button type="submit" [disabled]="disableAddSupplier">Add Supplier</button>
+    </form>
+</div>

@@ -1,0 +1,73 @@
+<div class="logs-panel" style="width: 80%;margin: auto;">
+    <h1>Stock Adjustment Logs</h1>
+    <div class="no-data">
+      <p *ngIf="stockLogs.length===0">No logs exist</p>
+    </div>
+    <div *ngIf="stockLogs.length>0">
+      <div class="date-range-filter" *ngIf="stockLogs.length>0">
+        <mat-form-field appearance="fill">
+          <mat-label>Start Date</mat-label>
+          <input matInput [matDatepicker]="startDatePicker" [(ngModel)]="startDate" (dateChange)="filterByDateRange()">
+          <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>End Date</mat-label>
+          <input matInput [matDatepicker]="endDatePicker" [(ngModel)]="endDate" (dateChange)="filterByDateRange()">
+          <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #endDatePicker></mat-datepicker>
+        </mat-form-field>
+  
+      </div>
+      <div class="tabular-data">
+        <table mat-table [dataSource]="dataSource">
+          <!-- Log ID column -->
+        <ng-container matColumnDef="logId">
+          <th mat-header-cell *matHeaderCellDef> Log ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.logId}} </td>
+        </ng-container>
+    
+        <!-- Item ID Column -->
+        <ng-container matColumnDef="itemId">
+          <th mat-header-cell *matHeaderCellDef> Item ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.itemId}} </td>
+        </ng-container>
+    
+        <!-- Change Type Column -->
+        <ng-container matColumnDef="changeType">
+          <th mat-header-cell *matHeaderCellDef> Change Type </th>
+          <td mat-cell *matCellDef="let element"> {{element.changeType}} </td>
+        </ng-container>
+  
+        <!-- Quantity Number Column -->
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef> Quantity </th>
+          <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+        </ng-container>
+    
+        <!-- Reason Column -->
+        <ng-container matColumnDef="reason">
+          <th mat-header-cell *matHeaderCellDef> Reason </th>
+          <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
+        </ng-container>
+  
+        <!--Time Stamp Column -->
+        <ng-container matColumnDef="timeStamp">
+          <th mat-header-cell *matHeaderCellDef> Time Stamp </th>
+          <td mat-cell *matCellDef="let element"> {{element.timeStamp | customDate}} </td>
+        </ng-container>
+  
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+      </div>
+    </div>
+  </div>
+  
