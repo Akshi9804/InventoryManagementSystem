@@ -108,10 +108,10 @@
     </div>
 
     <div class=" feedback_pane">
-      <div class="feedback-header">
+      <div class="feedback_header">
         <p>Write Feedback</p>
       </div>
-      <div class="feedback-form">
+      <div class="feedback_form">
         <label for="location">Select Location:</label>
         <select id="location" [(ngModel)]="selectedLocation">
           <option *ngFor="let location of locations" [value]="location.name">{{ location.name }}</option>

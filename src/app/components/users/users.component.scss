@@ -20,7 +20,7 @@
                 width: 80%;
                 padding: 20px;
                 border-radius: 5px;
-                margin-top: 10px;
+                margin-bottom: 20px;
                 display: flex;
             justify-content: space-between;
                 &:hover{
@@ -82,7 +82,8 @@
                 padding: 20px;
                 border-radius: 5px;
                 display: flex;
-            justify-content: space-between;
+                justify-content: space-between;
+                margin-bottom: 20px;
                 &:hover{
                     transform: scale(1.01);
                   }

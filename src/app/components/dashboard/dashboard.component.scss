@@ -308,6 +308,7 @@ select {
     padding: 30px;
     overflow-y: auto;
     overflow-x: hidden;
+    height: 100%;
 
     .notifications_pane_head {
       display: flex;
@@ -333,7 +334,7 @@ select {
           display: flex;
           justify-content: space-between;
 
-          .not_button_staff {
+          .not_button-staff {
             border: transparent;
             background-color: whitesmoke;
             color: green;
@@ -390,16 +391,60 @@ select {
   .feedback_pane {
     background-color: whitesmoke;
     padding: 30px;
-
+    width: 43%;
+    height: 100%;
     .feedback_header {
       p {
         font-weight: bold;
+        color: rgb(53,94,59);
+        font-size: 1.4rem;
+        margin-top: 20px;
+        margin-bottom: 20px;
       }
-
     }
 
     .feedback_form {
       width: 100%;
+      label{
+        font-weight: bold;
+      }
+      select{
+        border-color: grey;
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+
+      textarea{
+        width: 92%;
+        min-height: 200px;
+        font-size: 1.2rem;
+        padding: 20px;
+        min-width:250px;
+        margin: auto;
+      }
+
+      button{
+      border: transparent;
+      border-radius: 5px;
+      background-color: black;
+      color: white;
+      padding: 10px 16px;
+      transition: all 1s ease;
+      font-weight: bold;
+      margin-top: 20px;
+      width: 100%;
+      &:hover {
+        opacity: 0.85;
+        transform: scale(1.02);
+        cursor: pointer;
+      }
+      }
+    }
+
+    .feedback-status{
+      color: green;
+      margin-top: 10px;
+      font-size: 1.2rem;
     }
   }
 }
