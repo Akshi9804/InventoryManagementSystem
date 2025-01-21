@@ -2,7 +2,7 @@
   <button *ngIf="isAdmin" class="addItemButton" (click)="openAddItem()">Add New Item</button>
   <h1>Inventory</h1>
   <div class="no-data">
-    <p *ngIf="items.length===0">No items are provided</p>
+    <p *ngIf="items.length===0">No items are provided!!</p>
   </div>
   <div *ngIf="items.length>0">
     <div class="filters">
