@@ -10,5 +10,9 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './task.component.scss'
 })
 export class TaskComponent {
+  menuOpen = false;
 
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 }

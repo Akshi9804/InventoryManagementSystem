@@ -1,9 +1,11 @@
 <div class="task">
-  <div class="menubar">
+  <button class="menu-button" (click)="toggleMenu()">☰</button>
+  
+  <div class="menubar" [class.open]="menuOpen">
     <app-menubar></app-menubar>
   </div>
-    
-    <div class="main-content">
-        <router-outlet></router-outlet> <!-- Content dynamically replaced -->
-      </div>
+  
+  <div class="main-content">
+    <router-outlet></router-outlet> <!-- Content dynamically replaced -->
+  </div>
 </div>
